@@ -73,6 +73,25 @@ If the samples do not have biological replicates, then run the following script
 ```
 bash computeDGEusing_DESeq_edgeR_noReplicates.sh
 ```
+Step-7: Construct BSgenome package for A.thaliana TAIR10 data
+However, there is already BSgenome package availabe in CRAN 'BSgenome.Athaliana.TAIR.TAIR9', but we recommend users to construct TAIR10 version of BSgenome which can be constructed using following steps.
+
+Convert genome FASTA to 2bit
+```
+faToTwoBit genome.fa athalianaTAIR10.2bit
+```
+
+Set the 'seqs_srcdir:' in 'BSgenome.Athaliana.TAIR.TAIR10-seed' file (which is available in Genome folder) by adding the path to wherever the athalianaTAIR10.2bit file is located.
+
+In R run the following command:
+
+```
+setwd("/path/to/seed/file")
+library(BSgenome)
+forgeBSgenomeDataPkg(BSgenome.Athaliana.TAIR.TAIR10-seed)
+```
+
+
 Step-8: Alternative splicing analysis using spliceR
 ```
 bash computeDGEusing_DESeq_edgeR_noReplicates.sh
