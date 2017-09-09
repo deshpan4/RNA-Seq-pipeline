@@ -11,6 +11,13 @@ The RNA-Seq pipeline performs the following tasks:
 * Differential Gene Expression using Cufflinks
 * Differential Gene Expression using DESeq
 * Differential Gene Expression using edgeR
+## Download
+Use git clone:
+```
+git clone https://github.com/deshpan4/RNA-Seq-pipeline
+```
+## Installation
+Download the RNA-Seq pipeline scripts using 'git clone' command. Make sure all the dependencies are installed before running the pipeline.
 ## Prerequisites
 Following tools should be installed before executing this pipeline on the host system:
 * samtools
@@ -24,9 +31,25 @@ Following tools should be installed before executing this pipeline on the host s
 ### R packages
 * DESeq
 * edgeR
-## Download
-Use git clone:
+## Usage
+Step-1: Run Data Processing pipeline
 ```
-git clone https://github.com/deshpan4/RNA-Seq-pipeline
+bash pipeline_Data_Processing.sh
 ```
-## Download
+Step-2: Transcript assembly
+```
+bash runCufflinks.sh
+```
+Step-3: Construct assembly file
+For merging cufflinks assemblies, an assembly text file is required. For example, for samples [SRX765602](https://www.ncbi.nlm.nih.gov/sra/SRX765602[accn]) and [SRX765948](https://www.ncbi.nlm.nih.gov/sra/SRX765948[accn]), no replicates are available. Therefore, write the following information to text file using notepad or text editor.
+```
+/sample_SRR1659921_SRR1659922/3-Cufflinks/file-1-2-cufflinks/transcripts.gtf
+/sample_SRR1660397_SRR1660398/3-Cufflinks/file-1-2-cufflinks/transcripts.gtf
+```
+For example, for [SRX765602](https://www.ncbi.nlm.nih.gov/sra/SRX765602[accn]), [SRX1068195](https://www.ncbi.nlm.nih.gov/sra/SRX1068195[accn]) and [SRX767119](https://www.ncbi.nlm.nih.gov/sra/SRX767119[accn]), where there are replicates available. Therefore, write the following information to text file using notepad or text editor.
+```
+/sample_SRR1659921_SRR1659922/3-Cufflinks/file-1-2-cufflinks/transcripts.gtf
+/sample_SRR2073174_SRR2073176/3-Cufflinks/file-1-2-cufflinks/transcripts.gtf
+/sample_SRR1661473_SRR1661474/3-Cufflinks/file-1-2-cufflinks/transcripts.gtf
+```
+Step-4: Compute Differential Gene Expression using Cuffdiff
