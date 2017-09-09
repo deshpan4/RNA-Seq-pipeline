@@ -21,6 +21,9 @@ Following tools should be installed before executing this pipeline on the host s
 * HTSeq
 * Bowtie2
 * R version 3.3 or higher
+### R packages
+* DESeq
+* edgeR
 ## Download
 Use git clone:
 ```
