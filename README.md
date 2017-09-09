@@ -91,8 +91,16 @@ library(BSgenome)
 forgeBSgenomeDataPkg(BSgenome.Athaliana.TAIR.TAIR10-seed)
 ```
 
+This command will generate a folder which can be used to install the package on the system.
 
+Next, in command-line, run the following command:
+
+```
+R CMD build BSgenome.Athaliana10.TAIR.TAIR10
+R CMD INSTALL BSgenome.Athaliana10.TAIR.TAIR10_1.4.2.tar.gz
+```
 Step-8: Alternative splicing analysis using spliceR
 ```
-bash computeDGEusing_DESeq_edgeR_noReplicates.sh
+Rscript spliceR_analysis.R
 ```
+NOTE: User must specify required path of cuffdiff output folder in 'spliceR_analysis.R' file.
