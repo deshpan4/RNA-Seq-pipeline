@@ -11,6 +11,7 @@ The RNA-Seq pipeline performs the following tasks:
 * Differential Gene Expression using Cufflinks
 * Differential Gene Expression using DESeq
 * Differential Gene Expression using edgeR
+* Alternative splicing analysis using spliceR
 ## Download
 Use git clone:
 ```
@@ -27,10 +28,14 @@ Following tools should be installed before executing this pipeline on the host s
 * cutadapt
 * HTSeq
 * Bowtie2
+* [Index and annotation for A.thaliana](ftp://igenome:G3nom3s4u@ussd-ftp.illumina.com/Arabidopsis_thaliana/Ensembl/TAIR10/Arabidopsis_thaliana_Ensembl_TAIR10.tar.gz)
+* [Blat](https://users.soe.ucsc.edu/~kent/src/blatSrc35.zip)
 * R version 3.3 or higher
 ### R packages
 * DESeq
 * edgeR
+* spliceR
+* BSgenome
 ## Usage
 Step-1: Run Data Processing pipeline
 ```
@@ -65,6 +70,10 @@ Step-6: If the samples have biological replicates, then run the following script
 bash computeDGEusing_DESeq_edgeR_withReplicates.sh
 ```
 If the samples do not have biological replicates, then run the following script
+```
+bash computeDGEusing_DESeq_edgeR_noReplicates.sh
+```
+Step-8: Alternative splicing analysis using spliceR
 ```
 bash computeDGEusing_DESeq_edgeR_noReplicates.sh
 ```
