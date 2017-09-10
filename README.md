@@ -104,3 +104,39 @@ R CMD INSTALL BSgenome.Athaliana10.TAIR.TAIR10_1.4.2.tar.gz
 Rscript spliceR_analysis.R
 ```
 NOTE: User must specify required path of cuffdiff output folder in 'spliceR_analysis.R' file.
+**Step-9:** Merging differentially expressed Gene IDs in more than one sample pairs
+
+In order to merge DE gene IDs, user must first extract At gene IDs from GTF file (merged.gtf) merged by Cuffmerge for the sample pair under comparison. For example, if the user would like to extract Gene IDs present in more than 1 sample pair in 5 samples i.e. S1, S2, S3, S4, S5 and the comparison is against the first sample S1 such as (S1 vs S2, S1 vs S3, S1 vs S4 and S1 vs S5), then those genes will be extracted which are expressed in more than one sample pairs. First step is to extract At IDs from GTF file as DGE table obtained from Cuffdiff (gene_exp.diff) file contains gene names instead of gene IDs. To extract the gene IDs run the following script.
+```
+bash extractGeneID_from_GTF.sh
+Rscript mergeGeneID_with_Cuffdiff_res.R cuffdiff_file DESeq_file edgeR_file geneid_genename.txt
+```
+Merge DGE genes from Cuffdiff (C), DESeq (D) and edgeR (E) in individual sample pairs. For example, to merge C, D, E genes in S1 vs S2 sample pair (Sample-1-2), run the following script.
+```
+Rscript merge_CDE.R cuffdiff_file DESeq_file edgeR_file
+```
+In each of the sample pair files, append sample name to each cuffdiff, DESeq and edgeR result files in R. For example, for sample pair S1 vs S2 (Sample-1-2-common-genes-C-D-E.csv)
+```
+## In R
+df<-read.csv("Sample-1-2-common-genes-C-D-E.csv",header=T,check.names=F)
+e1<-"S1S2"
+df["Sample1_Sample2"]<-e1
+df1<-df[,c("id","Sample1_Sample2")]
+write.csv(df,quote=FALSE,row.names=FALSE,"Sample-1-2-common-genes-C-D-E.csv")
+write.csv(df1,quote=FALSE,row.names=FALSE,"Sample-1-2-common-genes-C-D-E-idname.csv")
+```
+First merge multiple sample pair files:
+```
+s12<-read.csv("Sample-1-2-common-genes-C-D-E-idname.csv",header=T,check.names=F)
+s13<-read.csv("Sample-1-3-common-genes-C-D-E-idname.csv",header=T,check.names=F)
+s14<-read.csv("Sample-1-4-common-genes-C-D-E-idname.csv",header=T,check.names=F)
+s15<-read.csv("Sample-1-5-common-genes-C-D-E-idname.csv",header=T,check.names=F)
+s123<-merge(s12,s13,by="id",all.x=T)
+s1234<-merge(s123,s14,by="id",all.x=T)
+s12345<-merge(s1234,s15,by="id",all.x=T)
+write.csv(s12345,quote=FALSE,row.names=FALSE,"Sample-1-2-3-4-5-common-genes-C-D-E-idname.csv")
+```
+Extract common genes present in more than one column from multiple sample pairs.
+```
+Rscript extract_common_genes.R Sample-1-2-3-4-5-common-genes-C-D-E-idname.csv
+```
