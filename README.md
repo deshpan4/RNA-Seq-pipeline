@@ -1,5 +1,5 @@
 # RNA-Seq-pipeline
-An RNA-Seq pipeline for analysis of Arabidopsis Thaliana time-series datasets
+An RNA-Seq pipeline for analysis of *Arabidopsis Thaliana* time-series datasets
 ## Getting Started
 These instructions will help you to run the RNA-Seq pipeline from linux environment
 The RNA-Seq pipeline performs the following tasks:
