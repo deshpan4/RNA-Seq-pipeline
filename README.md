@@ -12,6 +12,8 @@ The RNA-Seq pipeline performs the following tasks:
 * Differential Gene Expression using DESeq
 * Differential Gene Expression using edgeR
 * Alternative splicing analysis using spliceR
+* Obtaining differentially expressed common genes between Cuffdiff, DESeq and edgeR in individual sample pairs
+* Obtaining differentially expressed common genes between Cuffdiff, DESeq and edgeR expressed in more than one sample pairs
 ## Download
 Use git clone:
 ```
