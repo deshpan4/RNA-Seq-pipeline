@@ -104,6 +104,7 @@ R CMD INSTALL BSgenome.Athaliana10.TAIR.TAIR10_1.4.2.tar.gz
 Rscript spliceR_analysis.R
 ```
 NOTE: User must specify required path of cuffdiff output folder in 'spliceR_analysis.R' file.
+
 **Step-9:** Merging differentially expressed Gene IDs in more than one sample pairs
 
 In order to merge DE gene IDs, user must first extract At gene IDs from GTF file (merged.gtf) merged by Cuffmerge for the sample pair under comparison. For example, if the user would like to extract Gene IDs present in more than 1 sample pair in 5 samples i.e. S1, S2, S3, S4, S5 and the comparison is against the first sample S1 such as (S1 vs S2, S1 vs S3, S1 vs S4 and S1 vs S5), then those genes will be extracted which are expressed in more than one sample pairs. First step is to extract At IDs from GTF file as DGE table obtained from Cuffdiff (gene_exp.diff) file contains gene names instead of gene IDs. To extract the gene IDs run the following script.
