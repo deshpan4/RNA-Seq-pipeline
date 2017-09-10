@@ -41,11 +41,11 @@ Following tools should be installed before executing this pipeline on the host s
 ```
 bash pipeline_Data_Processing.sh
 ```
-Step-2: Transcript assembly
+**Step-2:** Transcript assembly
 ```
 bash runCufflinks.sh
 ```
-Step-3: Construct assembly file
+**Step-3:** Construct assembly file
 For merging cufflinks assemblies, an assembly text file is required. For example, for samples [SRX765602](https://www.ncbi.nlm.nih.gov/sra/SRX765602[accn]) and [SRX765948](https://www.ncbi.nlm.nih.gov/sra/SRX765948[accn]), no replicates are available. Therefore, write the following information to text file using notepad or text editor.
 ```
 /sample_SRR1659921_SRR1659922/3-Cufflinks/file-1-2-cufflinks/transcripts.gtf
@@ -57,15 +57,15 @@ For example, for [SRX765602](https://www.ncbi.nlm.nih.gov/sra/SRX765602[accn]), 
 /home/sample_SRR2073174_SRR2073176/3-Cufflinks/file-1-2-cufflinks/transcripts.gtf
 /home/sample_SRR1661473_SRR1661474/3-Cufflinks/file-1-2-cufflinks/transcripts.gtf
 ```
-Step-4: Compute Differential Gene Expression using Cuffdiff
+**Step-4:** Compute Differential Gene Expression using Cuffdiff
 ```
 bash computeDGEusingCuffdiff.sh
 ```
-Step-5: Generate read counts using HTSeq
+**Step-5:** Generate read counts using HTSeq
 ```
 bash generateReadCounts.sh
 ```
-Step-6: If the samples have biological replicates, then run the following script
+**Step-6:** If the samples have biological replicates, then run the following script
 ```
 bash computeDGEusing_DESeq_edgeR_withReplicates.sh
 ```
@@ -73,7 +73,7 @@ If the samples do not have biological replicates, then run the following script
 ```
 bash computeDGEusing_DESeq_edgeR_noReplicates.sh
 ```
-Step-7: Construct BSgenome package for A.thaliana TAIR10 data
+**Step-7:** Construct BSgenome package for A.thaliana TAIR10 data
 However, there is already BSgenome package availabe in CRAN 'BSgenome.Athaliana.TAIR.TAIR9', but we recommend users to construct TAIR10 version of BSgenome which can be constructed using following steps.
 
 Convert genome FASTA to 2bit
@@ -99,7 +99,7 @@ Next, in command-line, run the following command:
 R CMD build BSgenome.Athaliana10.TAIR.TAIR10
 R CMD INSTALL BSgenome.Athaliana10.TAIR.TAIR10_1.4.2.tar.gz
 ```
-Step-8: Alternative splicing analysis using spliceR
+**Step-8:** Alternative splicing analysis using spliceR
 ```
 Rscript spliceR_analysis.R
 ```
