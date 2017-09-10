@@ -37,7 +37,7 @@ Following tools should be installed before executing this pipeline on the host s
 * spliceR
 * BSgenome
 ## Usage
-*Step-1:* Run Data Processing pipeline
+**Step-1:** Run Data Processing pipeline
 ```
 bash pipeline_Data_Processing.sh
 ```
