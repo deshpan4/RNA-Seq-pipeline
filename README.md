@@ -20,7 +20,7 @@ Use git clone:
 git clone https://github.com/deshpan4/RNA-Seq-pipeline
 ```
 ## Installation
-Download the RNA-Seq pipeline scripts using 'git clone' command. Make sure all the dependencies are installed before running the pipeline.
+Download the folder using 'git clone' command. Make sure all the dependencies are installed before running the pipeline.
 ## Prerequisites
 Following tools should be installed before executing this pipeline on the host system:
 * samtools
