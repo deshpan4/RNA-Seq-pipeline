@@ -39,4 +39,4 @@ Following tools should be installed before executing this pipeline on the host s
 * spliceR
 * BSgenome
 ## Usage
-Follow the steps mentioned in Pipeline.pdf file. This file contains detailed instructions and example commands for running the pipeline as well as post analysis scripts.
+Follow the steps mentioned in Example script Manual.pdf file. This file contains detailed instructions and example commands for running the pipeline as well as post analysis scripts.
